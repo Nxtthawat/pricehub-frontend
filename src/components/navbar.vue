@@ -24,7 +24,7 @@ onMounted(async ()=>{
   checkLoginStatus();
 
   if(isLoggedIn.value){
-    axios.get('http://localhost:3000/api/users/getUser', {
+    axios.get('https://pricehub-server.onrender.com/api/users/getUser', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

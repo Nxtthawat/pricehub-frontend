@@ -10,7 +10,7 @@ const router = useRouter();
 const isAdmin = ref(false);
 
 onMounted(()=>{
-    axios.get('http://localhost:3000/api/users/getUser', {
+    axios.get('https://pricehub-server.onrender.com/api/users/getUser', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -28,7 +28,7 @@ onMounted(()=>{
 
 const getAllUser = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/users/getAllUser', {
+        const response = await axios.get('https://pricehub-server.onrender.com/api/users/getAllUser', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -72,7 +72,7 @@ const uploadProduct = async () => {
     //console.log(file.value);
 
     try {
-        const response = await axios.post('http://localhost:3000/api/admin/upload', formData, {
+        const response = await axios.post('https://pricehub-server.onrender.com/api/admin/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -101,7 +101,7 @@ const closeModal = () => {
 
 const getProducts = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/admin/getProducts').then(response => {
+        const response = await axios.get('https://pricehub-server.onrender.com/api/admin/getProducts').then(response => {
             console.log('All product:', response.data);
             allProduct.value = response.data;
         }).catch(error => {
@@ -114,7 +114,7 @@ const getProducts = async () => {
 
 const deleteProduct = async (productId) => {
   try {
-    await axios.delete(`http://localhost:3000/api/admin/delete`, { data: { product_id: productId } });
+    await axios.delete(`https://pricehub-server.onrender.com/api/admin/delete`, { data: { product_id: productId } });
     console.log('Product deleted:', productId);
     getProducts(); // Refresh the product list
   } catch (error) {
@@ -223,7 +223,7 @@ getProducts();
                         <td>{{ product.product_name }}</td>
                         <td>{{ product.product_price }}</td>
                         <td>{{ product.product_unit }}</td>
-                        <td><img :src="'http://localhost:3000' + product.product_image" alt="" class="w-24 h-auto"></td>
+                        <td><img :src="'https://pricehub-server.onrender.com' + product.product_image" alt="" class="w-24 h-auto"></td>
                         <td>
                             <button class="btn btn-error text-white" @click="deleteProduct(product.product_id)">ลบ</button>
                         </td>

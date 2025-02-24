@@ -26,7 +26,7 @@ const username = ref('');
 
 onMounted(async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/users/getUser', {
+        const response = await axios.get('https://pricehub-server.onrender.com/api/users/getUser', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -45,7 +45,7 @@ onMounted(async () => {
 
 const updateProfile = async () => {
     try {
-        const response = await axios.put('http://localhost:3000/api/users/updateUser', {
+        const response = await axios.put('https://pricehub-server.onrender.com/api/users/updateUser', {
             email: email.value,
             username: username.value
         }, {

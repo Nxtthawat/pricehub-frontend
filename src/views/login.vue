@@ -19,7 +19,7 @@ const login = () =>{
         return;
     };
 
-    axios.post('http://localhost:3000/api/users/login', {
+    axios.post('https://pricehub-server.onrender.com/api/users/login', {
         username: username.value,
         password: password.value
     })

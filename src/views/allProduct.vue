@@ -26,7 +26,7 @@ const filteredProducts = computed(() => {
 
 const getProducts = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/admin/getProducts');
+        const response = await axios.get('https://pricehub-server.onrender.com/api/admin/getProducts');
         products.value = response.data;
         console.log('products:', response.data);
     } catch (error) {
@@ -62,7 +62,7 @@ const updateSearchQuery = () => {
             <div class="hover:scale-110 cursor-pointer duration-750 transition-all" v-for="(productDetail, productName) in filteredProducts" :key="productName">
                 <productCard>
                     <template #image>
-                        <img class="max-w-72 min-h-72 object-cover rounded-xl" :src="'http://localhost:3000' + productDetail['product_image']" alt="">
+                        <img class="max-w-72 min-h-72 object-cover rounded-xl" :src="'https://pricehub-server.onrender.com' + productDetail['product_image']" alt="">
                     </template>
                     <template #productName>
                         <h1 class="text-3xl font-bold mt-5">{{ productDetail['product_name'] }}</h1>

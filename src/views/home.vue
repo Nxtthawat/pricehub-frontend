@@ -18,7 +18,7 @@ const topProduct = ref([]);
 const topMenu = ref([]);
 
 const getTopProduct = () =>{
-  axios.get('http://localhost:3000/api/admin/getFourProducts').then((response) => {
+  axios.get('https://pricehub-server.onrender.com/api/admin/getFourProducts').then((response) => {
     //console.log(response.data);
     topProduct.value = response.data;
     console.log(topProduct.value);
@@ -30,7 +30,7 @@ const getTopProduct = () =>{
 getTopProduct();
 
 const getTopMenu = () =>{
-  axios.get('http://localhost:3000/api/menu/getFourMenu').then((response) => {
+  axios.get('https://pricehub-server.onrender.com/api/menu/getFourMenu').then((response) => {
     //console.log(response.data);
     topMenu.value = response.data;
     console.log(topMenu.value);
@@ -77,7 +77,7 @@ getTopMenu();
             <div class="flex justify-center flex-wrap md:flex-nowrap lg:w-4/6 my-auto mt-10 lg:ms-10  gap-12">
               <priceShow v-for="(productDetails, productName) in topProduct" :key="productName">
                 <template #productImage>
-                  <img class="max-w-18 w-18 h-32 max-h-32 object-cover hover:scale-110 transition-all duration-300" :src="'http://localhost:3000' + productDetails.product_image" alt="">
+                  <img class="max-w-18 w-18 h-32 max-h-32 object-cover hover:scale-110 transition-all duration-300" :src="'https://pricehub-server.onrender.com' + productDetails.product_image" alt="">
                 </template>
                 <template #productName>
                   {{ productDetails.product_name }}
@@ -98,7 +98,7 @@ getTopMenu();
           <div class="flex flex-wrap md:flex-nowrap my-auto mt-10 lg:ms-10 cursor-pointer gap-12">
             <menuSuggest v-for="(menuDetails, menuName) in topMenu" :key="menuName">
               <template #image>
-                <img class="w-full object-cover max-h-80 rounded-xl" :src="'http://localhost:3000' + menuDetails.menu_image" alt="">
+                <img class="w-full object-cover max-h-80 rounded-xl" :src="'https://pricehub-server.onrender.com' + menuDetails.menu_image" alt="">
               </template>
               <template #menuName>
                 <h1 class="text-2xl font-bold mt-5">{{ menuDetails.menu_topic }}</h1>

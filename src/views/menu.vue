@@ -32,7 +32,7 @@ checkLoginStatus();
 
 const getMenu = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/menu/getMenu').then(response => {
+        const response = await axios.get('https://pricehub-server.onrender.com/api/menu/getMenu').then(response => {
             console.log('Menu data:', response.data);
             products.value = response.data;
             console.log(products.value);
@@ -46,7 +46,7 @@ getMenu();
 
 const getUser = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/users/getUser', {
+        const response = await axios.get('https://pricehub-server.onrender.com/api/users/getUser', {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
@@ -71,7 +71,7 @@ const uploadProduct = async () => {
     //console.log(file.value);
 
     try {
-        const response = await axios.post('http://localhost:3000/api/menu/upload', formData, {
+        const response = await axios.post('https://pricehub-server.onrender.com/api/menu/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -97,7 +97,7 @@ const uploadProduct = async () => {
 const deleteProduct = async (productId) => {
     console.log('Deleting product:', productId);
     try {
-        const response = await axios.delete('http://localhost:3000/api/menu/delete/',{
+        const response = await axios.delete('https://pricehub-server.onrender.com/api/menu/delete/',{
             data:
             {
                 menu_id: productId
@@ -126,7 +126,7 @@ const editProduct = async (productId,menu_recipe,menu_howto,menu_author,menu_nam
     formData.append('menu_id', productId);
 
     try {
-        const response = await axios.put(`http://localhost:3000/api/menu/edit`, formData, {
+        const response = await axios.put(`https://pricehub-server.onrender.com/api/menu/edit`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -189,7 +189,7 @@ const openModal = (id) => {
 
         <div class="flex lg:flex-row flex-col flex-wrap  gap-16 ms-5">
             <div class="hover:scale-110 shadow-lg rounded-xl p-5 cursor-pointer duration-750 transition-all" v-for="(productDetail, productName) in products" :key="productName">
-                <img class="max-w-72 min-h-72 object-cover rounded-xl" :src="'http://localhost:3000' + productDetail['menu_image']" alt="">
+                <img class="max-w-72 min-h-72 object-cover rounded-xl" :src="'https://pricehub-server.onrender.com' + productDetail['menu_image']" alt="">
                 <div class="flex">
                     <h1 class="text-3xl font-bold mt-5">{{ productDetail['menu_topic'] }}</h1>
                     <div  v-if="productDetail['menu_author'] == author" class="dropdown ms-auto">

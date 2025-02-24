@@ -44,7 +44,7 @@ const regis = () =>{
         return;
     };
 
-    axios.post('http://localhost:3000/api/users/register', {
+    axios.post('https://pricehub-server.onrender.com/api/users/register', {
         email: email.value,
         username: username.value,
         password: password.value

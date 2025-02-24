@@ -81,8 +81,8 @@ const checkIfIsAdmin = () =>{
         tabindex="0"
         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li v-if="isAdmin"><RouterLink to="/admin">admin</RouterLink></li>  
-        <li><RouterLink to="/all-product">ราคาวัถุดิบ</RouterLink></li>
-        <li><RouterLink to="/all-menu">โพสต์ของชุมชล</RouterLink></li>
+        <li><RouterLink to="/all-product">ราคาวัคถุดิบ</RouterLink></li>
+        <li><RouterLink to="/all-menu">โพสต์ของชุมชน</RouterLink></li>
       </ul>
         </div>
         <RouterLink to="/" class="btn btn-ghost text-xl">PriceHub</RouterLink>

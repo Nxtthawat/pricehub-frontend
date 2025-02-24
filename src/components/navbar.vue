@@ -89,8 +89,8 @@ const checkIfIsAdmin = () =>{
       </div>
       <div class="navbar-center hidden lg:flex ">
         <ul class="menu menu-horizontal text-lg px-1">
-          <li><RouterLink to="/all-product">ราคาวัถุดิบ</RouterLink></li>
-          <li><RouterLink to="/all-menu">โพสต์ของชุมชล</RouterLink></li>
+          <li><RouterLink to="/all-product">ราคาวัตถุดิบ</RouterLink></li>
+          <li><RouterLink to="/all-menu">โพสต์ของชุมชน</RouterLink></li>
         </ul>
       </div>
       <div class="navbar-end">

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Sarabun";
+    src: url("assets/Sarabun-Regular.ttf");
+}
+
+*{
+    font-family: "Sarabun";
+    margin: 0;
+    box-sizing: border-box;
+}

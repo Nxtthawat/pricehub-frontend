@@ -142,7 +142,7 @@ const editProduct = async (productId,menu_recipe,menu_author,menu_name) => {
         console.error('Error editing file:', error);
     }
 
-    console.log(menu_name, menu_recipe, menu_author, menu_howto);
+    console.log(menu_name, menu_recipe, menu_author);
 };
 
 const openModal = (id) => {
@@ -154,7 +154,10 @@ const openModal = (id) => {
 
     <div class="container mx-auto mt-16">
         <div class="flex justify-between">
-            <h1 class="text-fontPrimary text-4xl font-bold">โพสต์</h1>
+            <div class="block">
+                <h1 class="text-fontPrimary text-4xl font-bold">โพสต์</h1>
+                <p  class=" text-sm text-red-500">เข้าสู่ระบบเพื่อเพิ่มโพสต์</p>
+            </div>
             <div class="flex gap-3">
                 <button v-if="isLoggedIn" class="btn btn-primary" onclick="addPost.showModal()">เพิ่มโพสต์</button>
                 <dialog id="addPost" class="modal">
@@ -162,7 +165,7 @@ const openModal = (id) => {
                         <div class="modal-box">
                         <h3 class="text-2xl font-bold">เพิ่มโพสต์</h3>
                         <input type="text" v-model="productName" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ชื่อโพสต์" id="">
-                        <input type="text" v-model="price" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ที่อยู่" id="">
+                        <input type="text" v-model="price" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="รายละเอียด" id="">
                         <input type="hidden" v-model="author">
                         <label class="form-control w-full">
                             <div class="label">
@@ -202,7 +205,7 @@ const openModal = (id) => {
                                         <h3 class="text-2xl font-bold">แก้ไขโพสต์</h3>
                                         <input type="text" v-model="productDetail['menu_topic']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ชื่อโพสต์">
                                         <input type="text" v-model="productDetail['menu_recipe']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ที่อยู่">
-                                        <input type="hidden" v-model="productDetail['menu_author']">
+                                        <input type="text" v-model="productDetail['menu_author']">
                                         <label class="form-control w-full">
                                             <div class="label">
                                                 <span class="label-text">อัพโหลดรูปภาพ (288px x 128px)</span>
@@ -214,7 +217,7 @@ const openModal = (id) => {
                                                 <!-- if there is a button in form, it will close the modal -->
                                                 <button class="btn">Close</button>
                                             </form>
-                                            <button class="btn btn-primary" @click="editProduct(productDetail['menu_id'],productDetail['menu_recipe'],productDetail['menu_howto'],productDetail['menu_author'],productDetail['menu_topic'])"  type="submit">Upload</button>
+                                            <button class="btn btn-primary" @click="editProduct(productDetail['menu_id'],productDetail['menu_recipe'],productDetail['menu_author'],productDetail['menu_topic'])"  type="submit">Upload</button>
                                         </div>
                                     </div>
                                 </form>

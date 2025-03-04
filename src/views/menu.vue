@@ -66,7 +66,6 @@ const uploadProduct = async () => {
     formData.append('image', file.value);
     formData.append('product_name', productName.value);
     formData.append('product_price', price.value);
-    formData.append('product_unit', unit.value);
     formData.append('author', author.value);
     //console.log(file.value);
 
@@ -116,12 +115,11 @@ const deleteProduct = async (productId) => {
     }
 };
 
-const editProduct = async (productId,menu_recipe,menu_howto,menu_author,menu_name) => {
+const editProduct = async (productId,menu_recipe,menu_author,menu_name) => {
     const formData = new FormData();
     formData.append('image', file.value);
     formData.append('menu_topic', menu_name);
     formData.append('menu_recipe', menu_recipe);
-    formData.append('menu_howto', menu_howto);
     formData.append('menu_author', menu_author);
     formData.append('menu_id', productId);
 
@@ -164,8 +162,7 @@ const openModal = (id) => {
                         <div class="modal-box">
                         <h3 class="text-2xl font-bold">เพิ่มโพสต์</h3>
                         <input type="text" v-model="productName" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ชื่อโพสต์" id="">
-                        <input type="text" v-model="price" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="หมวด" id="">
-                        <input type="text" v-model="unit" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="รายละเอียด" id="">
+                        <input type="text" v-model="price" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ที่อยู่" id="">
                         <input type="hidden" v-model="author">
                         <label class="form-control w-full">
                             <div class="label">
@@ -187,11 +184,12 @@ const openModal = (id) => {
         </div>
         <div class="divider"></div>
 
-        <div class="flex lg:flex-row flex-col flex-wrap  gap-16 ms-5">
-            <div class="hover:scale-110 shadow-lg rounded-xl p-5 cursor-pointer duration-750 transition-all" v-for="(productDetail, productName) in products" :key="productName">
-                <img class="max-w-72 min-h-72 object-cover rounded-xl" :src="'https://pricehub-server.onrender.com' + productDetail['menu_image']" alt="">
+        <div class="flex lg:flex-row flex-col justify-left flex-wrap gap-5 ">
+            <div class="flex flex-col lg:flex-row justify-left flex-wrap gap-5">
+                <div class="max-w-72 min-w-72 h-auto hover:scale-110 shadow-lg rounded-xl p-5 cursor-pointer duration-750 transition-all" v-for="(productDetail, productName) in products" :key="productName">
+                <img class="max-w-64 min-w-64 min-h-52 max-h-52 object-cover rounded-xl" :src="'https://pricehub-server.onrender.com' + productDetail['menu_image']" alt="">
                 <div class="flex">
-                    <h1 class="text-3xl font-bold mt-5">{{ productDetail['menu_topic'] }}</h1>
+                    <h1 class="text-3xl font-bold mt-5 text-ellipsis">{{ productDetail['menu_topic'] }}</h1>
                     <div  v-if="productDetail['menu_author'] == author" class="dropdown ms-auto">
                         <label tabindex="0" class="btn btn-circle btn-sm mt-5">
                             ...
@@ -203,8 +201,7 @@ const openModal = (id) => {
                                     <div class="modal-box">
                                         <h3 class="text-2xl font-bold">แก้ไขโพสต์</h3>
                                         <input type="text" v-model="productDetail['menu_topic']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ชื่อโพสต์">
-                                        <input type="text" v-model="productDetail['menu_recipe']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="หมวด">
-                                        <input type="text" v-model="productDetail['menu_howto']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="รายละเอียด">
+                                        <input type="text" v-model="productDetail['menu_recipe']" class="input input-bordered input-primaryGreen input-md mt-4 w-full" required placeholder="ที่อยู่">
                                         <input type="hidden" v-model="productDetail['menu_author']">
                                         <label class="form-control w-full">
                                             <div class="label">
@@ -225,9 +222,10 @@ const openModal = (id) => {
                             <li><a @click="deleteProduct(productDetail['menu_id'])" class="text-red-500">ลบ</a></li>
                         </ul>
                     </div>
+                    </div>
+                    <h1 class="text-lg mt-2">{{ productDetail['menu_recipe'] }}</h1>
+                    <h1 class="text-sm mt-2">โดย: {{ productDetail['menu_author'] }}</h1>
                 </div>
-                <h1 class="text-lg mt-2">{{ productDetail['menu_recipe'] }}</h1>
-                <h1 class="text-sm mt-2">{{ productDetail['menu_author'] }}</h1>
             </div>
         </div> 
     </div>

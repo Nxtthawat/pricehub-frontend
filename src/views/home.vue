@@ -104,7 +104,7 @@ getTopMenu();
                 <h1 class="text-2xl font-bold mt-5">{{ menuDetails.menu_topic }}</h1>
               </template>
               <template #datePosted>
-                <h1 class="text-lg mt-2">{{ menuDetails.menu_howto }}</h1>
+                <h1 class="text-lg mt-2">{{ menuDetails.menu_recipe }}</h1>
               </template>
               <template #PostedBy>
                 <h1 class="text-lg mt-2">โพสต์โดย: {{ menuDetails.menu_author }}</h1>
